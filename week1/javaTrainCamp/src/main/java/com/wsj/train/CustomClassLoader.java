@@ -1,17 +1,23 @@
 package com.wsj.train;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public class CustomClassLoader extends ClassLoader {
     public static void main(String[] args) {
         try {
-            new CustomClassLoader().findClass("Hello").newInstance();
+            Object hello = new CustomClassLoader().findClass("Hello").newInstance();
+            hello.getClass().getMethod("hello").invoke(hello.getClass().newInstance());
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
     }
