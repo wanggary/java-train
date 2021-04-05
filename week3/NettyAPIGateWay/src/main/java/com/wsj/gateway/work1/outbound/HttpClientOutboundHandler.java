@@ -21,12 +21,12 @@ import static io.netty.handler.codec.http.HttpResponseStatus.NO_CONTENT;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
-public class HttpOutboundHandler {
+public class HttpClientOutboundHandler {
 
     private CloseableHttpAsyncClient httpclient;
     private String childUrl = "http://192.168.1.106:8181";
 
-    public HttpOutboundHandler() {
+    public HttpClientOutboundHandler() {
         int cores = Runtime.getRuntime().availableProcessors();
 
         IOReactorConfig ioConfig = IOReactorConfig.custom()
